@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <link rel="stylesheet" href="css/style.css">
+  <title>Mi sitio con Tailwind</title>
+
+  <!-- Tailwind CSS vía CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <!-- NAVBAR -->
+  <nav class="bg-teal-400 p-4 ">
+    <div class="container mx-auto flex justify-between items-center">
+      <a href="#" class="text-white font-bold text-xl">Skynet</a>
+      <ul class="flex space-x-6 ms-auto">
+        <li><a href="#" class="text-white hover:underline ">Inicio</a></li>
+        <li><a href="#" class="text-white hover:underline">Características</a></li>
+        <li><a href="#" class="text-white hover:underline">Precios</a></li>
+      </ul>
+      <span class="text-white hidden sm:inline ms-6">Texto con un elemento en línea</span>
+    </div>
+  </nav>
+
+  <!-- CARRUSEL SIMULADO -->
+  <div class="relative mt-6">
+    <div id="carousel" class="carousel">
+      <img src="img/img1.jpg" class="carousel-item" alt="img1" />
+      <img src="img/img2.jpg" class="carousel-item" alt="img2" />
+      <img src="img/img3.jpg" class="carousel-item" alt="img3" />
+    </div>
+
+    <!-- Controles -->
+    <div class="absolute inset-0 flex justify-between items-center px-4">
+      <button onclick="prevSlide()" class="bg-white/50 hover:bg-white text-black px-2 py-1 rounded-full">&larr;</button>
+      <button onclick="nextSlide()" class="bg-white/50 hover:bg-white text-black px-2 py-1 rounded-full">&rarr;</button>
+    </div>
+  </div>
+
+  <!-- Script para simular el carrusel -->
+  <script>
+    const carousel = document.getElementById('carousel');
+    const items = carousel.querySelectorAll('.carousel-item');
+    let index = 0;
+
+    function showSlide(i) {
+      index = (i + items.length) % items.length;
+      carousel.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    function prevSlide() {
+      showSlide(index - 1);
+    }
+
+    function nextSlide() {
+      showSlide(index + 1);
+    }
+
+    setInterval(nextSlide, 5000); // Cambio automático cada 5 segundos
+  </script>
+</body>
+</html>
